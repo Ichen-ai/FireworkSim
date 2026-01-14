@@ -1,6 +1,5 @@
 class Firework{
   //fields
-  ArrayList fireworkList;
   PVector pos;
   String shape;
   color col;
@@ -8,7 +7,6 @@ class Firework{
   
   //constructor
   Firework() {
-    this.fireworkList = new ArrayList();
     this.pos = pos;
     this.shape = shape;
     this.col = col;
@@ -17,6 +15,10 @@ class Firework{
   }
   
   //methods
-  
+  float calVelocity(){
+    float h = 600 - this.pos.y;
+    float initialVel = sqrt(2*9.8*h);
+    return initialVel;
+  }
   
 }
