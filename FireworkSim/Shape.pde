@@ -1,0 +1,11 @@
+void starFire(){
+  
+  
+  
+}
+
+void circleFire(){
+  
+  
+  
+}

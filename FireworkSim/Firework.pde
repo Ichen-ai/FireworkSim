@@ -1,13 +1,13 @@
 class Firework{
   //fields
-  PVector pos;
+  PVector endPos;
   String shape;
   color col;
   float size;
   
   //constructor
   Firework() {
-    this.pos = pos;
+    this.endPos = endPos;
     this.shape = shape;
     this.col = col;
     this.size = size;
@@ -15,10 +15,15 @@ class Firework{
   }
   
   //methods
-  float calVelocity(){
-    float h = 600 - this.pos.y;
+  float calInitialVel(){
+    float h = 600 - this.endPos.y;
     float initialVel = sqrt(2*9.8*h);
+    
     return initialVel;
+  }
+  
+  void explode(){
+    
   }
   
 }
