@@ -37,7 +37,7 @@ public void createGUI(){
   gui.addDrawHandler(this, "guiDraw");
   sizeSlider = new GCustomSlider(gui, 70, 40, 100, 40, "grey_blue");
   sizeSlider.setShowValue(true);
-  sizeSlider.setLimits(1.0, 1.0, 4.0);
+  sizeSlider.setLimits(2.0, 1.0, 4.0);
   sizeSlider.setNumberFormat(G4P.DECIMAL, 2);
   sizeSlider.setOpaque(false);
   sizeSlider.addEventHandler(this, "changeSize");

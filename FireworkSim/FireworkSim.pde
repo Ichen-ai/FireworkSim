@@ -25,6 +25,7 @@ void draw(){
   for (int i = fireworks.size()-1; i >= 0; i--){
     Launch l = fireworks.get(i);
     l.update();
+    l.display();
     
     if (l.isDead()){
       fireworks.remove(i);

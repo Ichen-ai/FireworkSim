@@ -1,7 +1,7 @@
 class Launch{
   String shape;
   float size, hue;
-  PVector pos, end, vel, acc;
+  PVector pos, end, vel;
   boolean exploded;
   
   //constructor
@@ -15,8 +15,6 @@ class Launch{
     vel = PVector.sub(end, pos);
     vel.normalize();
     vel.mult(10);
-    
-    acc = new PVector(0, 0);
   }
 
   
@@ -40,5 +38,11 @@ class Launch{
   
   boolean isDead(){
     return exploded;
+  }
+  
+  void display(){
+    stroke(255, 0, 0);
+    strokeWeight(64);
+    point(this.pos.x, this.pos.y);
   }
 }

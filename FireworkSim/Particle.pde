@@ -26,9 +26,8 @@ class Particle{
   }
   
   void display(){
-    stroke(255, 0, 0);
-    strokeWeight(4);
-    point(this.pos.x, this.pos.y);
+    fill(hue, 255, 255, lifespan);
+    ellipse(pos.x, pos.y, size, size);
   }
   
   boolean isDead(){
