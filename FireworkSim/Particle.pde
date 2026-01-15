@@ -19,15 +19,16 @@ class Particle{
   
   //methods
   void update(){
-    vel.y += gravity;
-    pos.add(vel);
+    this.vel.y += gravity;
+    this.pos.add(vel);
     
     lifespan -= 4;
   }
   
   void display(){
-    fill(hue, 255, 255, lifespan);
-    ellipse(pos.x, pos.y, size, size);
+    stroke(255, 0, 0);
+    strokeWeight(4);
+    point(this.pos.x, this.pos.y);
   }
   
   boolean isDead(){
