@@ -14,7 +14,7 @@ class Launch{
     
     vel = PVector.sub(end, pos);
     vel.normalize();
-    vel.mult(10);
+    vel.mult(5);
   }
 
   
@@ -41,8 +41,8 @@ class Launch{
   }
   
   void display(){
-    stroke(255, 0, 0);
-    strokeWeight(64);
-    point(this.pos.x, this.pos.y);
+    fill(hue, 255, 255);
+    noStroke();
+    ellipse(this.pos.x, this.pos.y, 8, 8);
   }
 }

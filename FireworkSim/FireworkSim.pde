@@ -54,7 +54,7 @@ void mousePressed(){
 void launchFirework(float x, float y){
   size = sizeSlider.getValueI();
   
-  fireworks.add(new Launch(size, random(255), x, 0, y));
+  fireworks.add(new Launch(size, random(255), x, 600, y));
   
   
 }
