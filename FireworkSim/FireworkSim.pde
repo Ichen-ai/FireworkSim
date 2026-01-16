@@ -5,6 +5,8 @@ import g4p_controls. *;
 ArrayList <Launch> fireworks;
 ArrayList <Particle> particles;
 float size;
+int num = 100;
+int hue = 255;
 
 void setup(){
   size(800, 600);
@@ -56,6 +58,7 @@ void mousePressed(){
 
 void launchFirework(float x, float y){
   size = sizeSlider.getValueI();
+  num = numParticleSlider.getValueI();
   
-  fireworks.add(new Launch(size, random(255), x, 600, y));
+  fireworks.add(new Launch(size, random(255), x, 600, y, num));
 }
