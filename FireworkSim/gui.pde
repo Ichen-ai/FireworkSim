@@ -38,7 +38,7 @@ public void chooseColPanelClicked(GPanel source, GEvent event) { //_CODE_:choose
   println("chooseColPanel - GPanel >> GEvent." + event + " @ " + millis());
 } //_CODE_:chooseColPanel:924436:
 
-public void knob1_turn1(GKnob source, GEvent event) { //_CODE_:hueKnob:633906:
+public void hueKnobTurn(GKnob source, GEvent event) { //_CODE_:hueKnob:633906:
   println("knob1 - GKnob >> GEvent." + event + " @ " + millis());
 } //_CODE_:hueKnob:633906:
 
@@ -111,7 +111,7 @@ public void createGUI(){
   hueKnob.setLimits(0.5, 0.0, 360.0);
   hueKnob.setShowTicks(true);
   hueKnob.setOpaque(false);
-  hueKnob.addEventHandler(this, "knob1_turn1");
+  hueKnob.addEventHandler(this, "hueKnobTurn");
   saturationSlider = new GCustomSlider(gui, 110, 30, 90, 40, "grey_blue");
   saturationSlider.setRotation(PI/2, GControlMode.CORNER);
   saturationSlider.setLimits(0.5, 0.0, 100.0);
