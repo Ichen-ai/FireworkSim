@@ -12,6 +12,7 @@ class Launch{
     this.size = s;
     this.exploded = false;
     
+    //calculate velocity
     vel = PVector.sub(end, pos);
     vel.normalize();
     vel.mult(5);
