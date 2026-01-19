@@ -6,7 +6,8 @@ ArrayList <Launch> fireworks;
 ArrayList <Particle> particles;
 float size;
 int num = 100;
-int hue = 255;
+int hue;
+boolean ranHue = false;
 
 void setup(){
   size(800, 600);
@@ -60,5 +61,6 @@ void launchFirework(float x, float y){
   size = sizeSlider.getValueI();
   num = numParticleSlider.getValueI();
   
-  fireworks.add(new Launch(size, random(255), x, 600, y, num));
+  if (ranHue == true){fireworks.add(new Launch(size, random(255), x, 600, y, num));}
+  else{fireworks.add(new Launch(size, hue, x, 600, y, num));}
 }

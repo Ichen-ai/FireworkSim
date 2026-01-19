@@ -44,7 +44,7 @@ class Launch{
   }
   
   void display(){
-    fill(hue, 255, 255);
+    fill(this.hue, 255, 255);
     noStroke();
     ellipse(this.pos.x, this.pos.y, 8, 8);
   }

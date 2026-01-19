@@ -26,29 +26,23 @@ public void numParticleChange(GCustomSlider source, GEvent event) { //_CODE_:num
 
 } //_CODE_:numParticleSlider:981033:
 
-public void randomColClicked(GOption source, GEvent event) { //_CODE_:randomCol:970990:
-  chooseColPanel.setCollapsed(true);
-} //_CODE_:randomCol:970990:
+public void randomHueClicked(GOption source, GEvent event) { //_CODE_:randomHue:970990:
+  chooseHuePanel.setCollapsed(true);
+  ranHue = true;
+} //_CODE_:randomHue:970990:
 
-public void chooseColClicked(GOption source, GEvent event) { //_CODE_:chooseCol:812704:
-  chooseColPanel.setCollapsed(false);
-} //_CODE_:chooseCol:812704:
+public void chooseHueClicked(GOption source, GEvent event) { //_CODE_:chooseHue:812704:
+  chooseHuePanel.setCollapsed(false);
+  ranHue = false;
+} //_CODE_:chooseHue:812704:
 
-public void chooseColPanelClicked(GPanel source, GEvent event) { //_CODE_:chooseColPanel:924436:
+public void chooseHuePanelClicked(GPanel source, GEvent event) { //_CODE_:chooseHuePanel:924436:
   println("chooseColPanel - GPanel >> GEvent." + event + " @ " + millis());
-} //_CODE_:chooseColPanel:924436:
+} //_CODE_:chooseHuePanel:924436:
 
 public void hueKnobTurn(GKnob source, GEvent event) { //_CODE_:hueKnob:633906:
-  println("knob1 - GKnob >> GEvent." + event + " @ " + millis());
+  hue = hueKnob.getValueI();
 } //_CODE_:hueKnob:633906:
-
-public void saturationSliderTurned(GCustomSlider source, GEvent event) { //_CODE_:saturationSlider:872026:
-  println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:saturationSlider:872026:
-
-public void brightnessSliderClicked(GCustomSlider source, GEvent event) { //_CODE_:brightnessSlider:726275:
-  println("custom_slider2 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:brightnessSlider:726275:
 
 
 
@@ -84,24 +78,24 @@ public void createGUI(){
   numParticleSlider.setOpaque(false);
   numParticleSlider.addEventHandler(this, "numParticleChange");
   colorFirework = new GToggleGroup();
-  randomCol = new GOption(gui, 200, 50, 120, 20);
-  randomCol.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  randomCol.setText("random color");
-  randomCol.setOpaque(false);
-  randomCol.addEventHandler(this, "randomColClicked");
-  chooseCol = new GOption(gui, 200, 80, 120, 20);
-  chooseCol.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  chooseCol.setText("choose color");
-  chooseCol.setOpaque(false);
-  chooseCol.addEventHandler(this, "chooseColClicked");
-  colorFirework.addControl(randomCol);
-  colorFirework.addControl(chooseCol);
-  chooseCol.setSelected(true);
-  chooseColPanel = new GPanel(gui, 200, 120, 160, 120, "choose color");
-  chooseColPanel.setText("choose color");
-  chooseColPanel.setOpaque(true);
-  chooseColPanel.addEventHandler(this, "chooseColPanelClicked");
-  hueKnob = new GKnob(gui, 0, 40, 60, 60, 1.0);
+  randomHue = new GOption(gui, 200, 50, 120, 20);
+  randomHue.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  randomHue.setText("random hue");
+  randomHue.setOpaque(false);
+  randomHue.addEventHandler(this, "randomHueClicked");
+  chooseHue = new GOption(gui, 200, 80, 120, 20);
+  chooseHue.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  chooseHue.setText("choose hue");
+  chooseHue.setOpaque(false);
+  chooseHue.addEventHandler(this, "chooseHueClicked");
+  colorFirework.addControl(randomHue);
+  colorFirework.addControl(chooseHue);
+  chooseHue.setSelected(true);
+  chooseHuePanel = new GPanel(gui, 200, 120, 120, 90, "choose Hue");
+  chooseHuePanel.setText("choose Hue");
+  chooseHuePanel.setOpaque(true);
+  chooseHuePanel.addEventHandler(this, "chooseHuePanelClicked");
+  hueKnob = new GKnob(gui, 0, 20, 60, 60, 1.0);
   hueKnob.setTurnRange(0, 359);
   hueKnob.setTurnMode(GKnob.CTRL_ANGULAR);
   hueKnob.setShowArcOnly(false);
@@ -112,21 +106,7 @@ public void createGUI(){
   hueKnob.setShowTicks(true);
   hueKnob.setOpaque(false);
   hueKnob.addEventHandler(this, "hueKnobTurn");
-  saturationSlider = new GCustomSlider(gui, 110, 30, 90, 40, "grey_blue");
-  saturationSlider.setRotation(PI/2, GControlMode.CORNER);
-  saturationSlider.setLimits(0.5, 0.0, 100.0);
-  saturationSlider.setNumberFormat(G4P.DECIMAL, 2);
-  saturationSlider.setOpaque(false);
-  saturationSlider.addEventHandler(this, "saturationSliderTurned");
-  brightnessSlider = new GCustomSlider(gui, 160, 30, 90, 40, "grey_blue");
-  brightnessSlider.setRotation(PI/2, GControlMode.CORNER);
-  brightnessSlider.setLimits(0.5, 0.0, 1.0);
-  brightnessSlider.setNumberFormat(G4P.DECIMAL, 2);
-  brightnessSlider.setOpaque(false);
-  brightnessSlider.addEventHandler(this, "brightnessSliderClicked");
-  chooseColPanel.addControl(hueKnob);
-  chooseColPanel.addControl(saturationSlider);
-  chooseColPanel.addControl(brightnessSlider);
+  chooseHuePanel.addControl(hueKnob);
   gui.loop();
 }
 
@@ -138,9 +118,7 @@ GLabel sizeLabel;
 GLabel numParticleLabel; 
 GCustomSlider numParticleSlider; 
 GToggleGroup colorFirework; 
-GOption randomCol; 
-GOption chooseCol; 
-GPanel chooseColPanel; 
+GOption randomHue; 
+GOption chooseHue; 
+GPanel chooseHuePanel; 
 GKnob hueKnob; 
-GCustomSlider saturationSlider; 
-GCustomSlider brightnessSlider; 
