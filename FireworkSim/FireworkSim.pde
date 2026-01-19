@@ -49,6 +49,15 @@ void draw(){
     }
   }
   
+  //color of fireworks
+  if (ranHue == false){
+    fill(hue, 255, 255);
+    rect(700, 50, 25, 25);
+    fill(0, 0, 255);
+    textSize(30);
+    text(": Hue", 725, 70);
+  }
+  
   fill(255);
 }
 
