@@ -4,7 +4,9 @@ import g4p_controls. *;
 //global variables
 ArrayList <Launch> fireworks;
 ArrayList <Particle> particles;
-float size;
+int [] possiRating;
+int [] ratings;
+float size, rating;
 int num = 100;
 int hue;
 boolean ranHue = false;
@@ -58,18 +60,7 @@ void draw(){
     text(": Hue", 725, 70);
   }
   
-  fill(255);
-}
-
-//mouse press to launch firework
-void mousePressed(){
-  launchFirework(mouseX, mouseY);
-}
-
-void launchFirework(float x, float y){
-  size = sizeSlider.getValueI();
-  num = numParticleSlider.getValueI();
+  //rating();
   
-  if (ranHue == true){fireworks.add(new Launch(size, random(255), x, 600, y, num));}
-  else{fireworks.add(new Launch(size, hue, x, 600, y, num));}
+  fill(255);
 }
