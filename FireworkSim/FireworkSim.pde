@@ -5,8 +5,8 @@ import g4p_controls. *;
 ArrayList <Launch> fireworks;
 ArrayList <Particle> particles;
 int [] possiRating;
-int [] ratings;
-float size, rating;
+ArrayList <Integer> ratings;
+float size, rating, averageRating, totalRatings;
 int num = 100;
 int hue;
 boolean ranHue = false;
@@ -16,10 +16,10 @@ void setup(){
   colorMode(HSB, 255);
   createGUI();
   noStroke();
-  
-  //arraylists
+   
   fireworks = new ArrayList();
   particles = new ArrayList();
+  ratings = new ArrayList();
   
 }
 
@@ -60,7 +60,7 @@ void draw(){
     text(": Hue", 725, 70);
   }
   
-  //rating();
+  calculateRating();
   
   fill(255);
 }
