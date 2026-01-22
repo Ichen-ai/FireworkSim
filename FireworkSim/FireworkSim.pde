@@ -13,6 +13,7 @@ int hue, time;
 boolean ranHue = false;
 String review;
 String [] ratingsFile;
+GDropList chooseShape;
 
 void setup(){
   size(800, 600);
@@ -27,6 +28,8 @@ void setup(){
   fireworks = new ArrayList();
   particles = new ArrayList();
   ratings = new ArrayList();
+  
+  
 }
 
 void draw(){
