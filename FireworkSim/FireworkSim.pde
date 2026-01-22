@@ -8,19 +8,31 @@ int [] possiRating;
 ArrayList <Integer> ratings;
 float size, rating, averageRating, totalRatings;
 int num = 100;
-int hue;
+int startTime = second();
+int hue, time;
 boolean ranHue = false;
+String review;
+String [] fiveStar;
+String [] fourStar;
+String [] threeStar;
+String [] twoStar;
+String [] oneStar;
 
 void setup(){
   size(800, 600);
   colorMode(HSB, 255);
   createGUI();
   noStroke();
+  
+  fiveStar = loadStrings("ratingFive.txt");
+  fourStar = loadStrings("ratingFour.txt");
+  threeStar = loadStrings("ratingThree.txt");
+  twoStar = loadStrings("ratingTwo.txt");
+  oneStar = loadStrings("ratingOne.txt");
    
   fireworks = new ArrayList();
   particles = new ArrayList();
   ratings = new ArrayList();
-  
 }
 
 void draw(){

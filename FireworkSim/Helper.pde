@@ -15,17 +15,38 @@ void launchFirework(float x, float y){
 float calculateRating() {
   float enjoyment = size * num * fireworks.size() / 1200;
   int[] possiRating;
-
+  
+  time = second()-1;
+  
   if (enjoyment >= 5) {
     possiRating = new int[] {1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5};
-  } else if (enjoyment >= 4) {
+    if (time == startTime){
+      review = fiveStar[int(random(1))];
+    }
+  } 
+  else if (enjoyment >= 4) {
     possiRating = new int[] {1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5};
-  } else if (enjoyment >= 3) {
+    if (time == startTime){
+      review = fourStar[int(random(1))];
+    }
+  } 
+  else if (enjoyment >= 3) {
     possiRating = new int[] {1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5};
-  } else if (enjoyment >= 2) {
+    if (time == startTime){
+      review = threeStar[int(random(1))];
+    }
+  } 
+  else if (enjoyment >= 2) {
     possiRating = new int[] {1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5};
-  } else {
+    if (time == startTime){
+      review = twoStar[int(random(1))];
+    }
+  } 
+  else {
     possiRating = new int[] {1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5};
+    if (time == startTime){
+      review = oneStar[int(random(1))];
+    }
   }
 
   int index = int(random(possiRating.length));
@@ -44,7 +65,9 @@ float calculateRating() {
     averageRating = 0;
   }
   
-  println(averageRating);
+  println(time);
+  println(startTime);
+  println(review);
   
   return averageRating;
 }
