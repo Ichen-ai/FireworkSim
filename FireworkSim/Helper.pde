@@ -13,39 +13,39 @@ void launchFirework(float x, float y){
 
 //Projected Rating
 float calculateRating() {
-  float enjoyment = size * num * fireworks.size()/600;
+  enjoyment = size * num * fireworks.size()/600;
   int[] possiRating;
   
   time = second()-1;
   
   if (enjoyment >= 5) {
     possiRating = new int[] {1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5};
-    if (time == startTime){
+    if (frameCount % 120 == 0){
       review = ratingsFile[int(random(1, 3))];
     }
   } 
   else if (enjoyment >= 4) {
     possiRating = new int[] {1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5};
-    if (time == startTime){
+    if (frameCount % 120 == 0){
       review = ratingsFile[int(random(4, 6))];
     }
   } 
   else if (enjoyment >= 3) {
     possiRating = new int[] {1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5};
-    if (time == startTime){
+    if (frameCount % 120 == 0){
       review = ratingsFile[int(random(7, 9))];
     }
   } 
   else if (enjoyment >= 2) {
     possiRating = new int[] {1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5};
-    if (time == startTime){
+    if (frameCount % 120 == 0){
       review = ratingsFile[int(random(10, 12))];
     }
   } 
   else {
     possiRating = new int[] {1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5};
-    if (time == startTime){
-      review = ratingsFile[int(random(13, 14))];
+    if (frameCount % 120 == 0){
+      review = ratingsFile[int(random(13, 15))];
     }
   }
 
@@ -69,12 +69,42 @@ float calculateRating() {
 }
 
 void displayReview(){
-  String displayRating = "Rating: "+averageRating;
+  String displayRating = "Average Rating: "+averageRating;
   
   fill(0, 0, 255);
   textSize(16);
   text(displayRating, 25, 50);
   text("review:", 25, 75);
   text(review, 25, 100);
-  
+  fill(40, 360, 360);
+  if (enjoyment >= 1){
+    star(90, 70, 6, 14, 5);
+  }
+  if (enjoyment >= 2){
+    star(130, 70, 6, 14, 5);
+  }
+  if (enjoyment >= 3){
+    star(170, 70, 6, 14, 5);
+  }
+  if (enjoyment >= 4){
+    star(210, 70, 6, 14, 5);
+  }
+  if (enjoyment >= 5){
+    star(250, 70, 6, 14, 5);
+  }
+}
+
+void star(float x, float y, float radius1, float radius2, int npoints) {
+  float angle = TWO_PI / npoints;
+  float halfAngle = angle/2.0;
+  beginShape();
+  for (float a = 0; a < TWO_PI; a += angle) {
+    float sx = x + cos(a) * radius2;
+    float sy = y + sin(a) * radius2;
+    vertex(sx, sy);
+    sx = x + cos(a+halfAngle) * radius1;
+    sy = y + sin(a+halfAngle) * radius1;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
 }

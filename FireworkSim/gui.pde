@@ -44,6 +44,10 @@ public void hueKnobTurn(GKnob source, GEvent event) { //_CODE_:hueKnob:633906:
   hue = hueKnob.getValueI();
 } //_CODE_:hueKnob:633906:
 
+public void dropList2_click1(GDropList source, GEvent event) { //_CODE_:chooseShape:319246:
+  println("chooseShape - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:chooseShape:319246:
+
 
 
 // Create all the GUI controls. 
@@ -57,21 +61,21 @@ public void createGUI(){
   gui.noLoop();
   gui.setActionOnClose(G4P.KEEP_OPEN);
   gui.addDrawHandler(this, "guiDraw");
-  sizeSlider = new GCustomSlider(gui, 70, 40, 100, 40, "grey_blue");
+  sizeSlider = new GCustomSlider(gui, 70, 10, 100, 40, "grey_blue");
   sizeSlider.setShowValue(true);
   sizeSlider.setLimits(2.0, 1.0, 4.0);
   sizeSlider.setNumberFormat(G4P.DECIMAL, 2);
   sizeSlider.setOpaque(false);
   sizeSlider.addEventHandler(this, "changeSize");
-  sizeLabel = new GLabel(gui, 3, 47, 69, 20);
+  sizeLabel = new GLabel(gui, 0, 20, 69, 20);
   sizeLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   sizeLabel.setText("Particle Size");
   sizeLabel.setOpaque(false);
-  numParticleLabel = new GLabel(gui, 11, 98, 49, 19);
+  numParticleLabel = new GLabel(gui, 10, 50, 50, 20);
   numParticleLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   numParticleLabel.setText("NumberParticle");
   numParticleLabel.setOpaque(false);
-  numParticleSlider = new GCustomSlider(gui, 70, 90, 100, 40, "grey_blue");
+  numParticleSlider = new GCustomSlider(gui, 70, 40, 100, 40, "grey_blue");
   numParticleSlider.setShowValue(true);
   numParticleSlider.setLimits(100, 0, 200);
   numParticleSlider.setNumberFormat(G4P.INTEGER, 0);
@@ -107,6 +111,9 @@ public void createGUI(){
   hueKnob.setOpaque(false);
   hueKnob.addEventHandler(this, "hueKnobTurn");
   chooseHuePanel.addControl(hueKnob);
+  chooseShape = new GDropList(gui, 10, 90, 110, 120, 5, 10);
+  chooseShape.setItems(loadStrings("list_319246"), 0);
+  chooseShape.addEventHandler(this, "dropList2_click1");
   gui.loop();
 }
 
@@ -122,3 +129,4 @@ GOption randomHue;
 GOption chooseHue; 
 GPanel chooseHuePanel; 
 GKnob hueKnob; 
+GDropList chooseShape; 

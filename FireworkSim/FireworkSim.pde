@@ -6,7 +6,7 @@ ArrayList <Launch> fireworks;
 ArrayList <Particle> particles;
 int [] possiRating;
 ArrayList <Integer> ratings;
-float size, rating, averageRating, totalRatings;
+float size, rating, averageRating, totalRatings, enjoyment;
 int num = 100;
 int startTime = second();
 int hue, time;
@@ -21,6 +21,8 @@ void setup(){
   noStroke();
   
   ratingsFile = loadStrings("rating.txt");
+  
+  review = "waiting for review...";
    
   fireworks = new ArrayList();
   particles = new ArrayList();
