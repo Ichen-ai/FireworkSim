@@ -12,11 +12,7 @@ int startTime = second();
 int hue, time;
 boolean ranHue = false;
 String review;
-String [] fiveStar;
-String [] fourStar;
-String [] threeStar;
-String [] twoStar;
-String [] oneStar;
+String [] ratingsFile;
 
 void setup(){
   size(800, 600);
@@ -24,11 +20,7 @@ void setup(){
   createGUI();
   noStroke();
   
-  fiveStar = loadStrings("ratingFive.txt");
-  fourStar = loadStrings("ratingFour.txt");
-  threeStar = loadStrings("ratingThree.txt");
-  twoStar = loadStrings("ratingTwo.txt");
-  oneStar = loadStrings("ratingOne.txt");
+  ratingsFile = loadStrings("rating.txt");
    
   fireworks = new ArrayList();
   particles = new ArrayList();
@@ -73,6 +65,7 @@ void draw(){
   }
   
   calculateRating();
+  displayReview();
   
   fill(255);
 }
