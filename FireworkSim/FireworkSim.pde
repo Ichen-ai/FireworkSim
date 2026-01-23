@@ -1,7 +1,7 @@
 // Importing necessary tools
 import g4p_controls. *;
 
-//global variables
+//global variables and arrays
 ArrayList <Launch> fireworks;
 ArrayList <Particle> particles;
 int [] possiRating;
@@ -13,7 +13,6 @@ int hue, time;
 boolean ranHue = false;
 String review;
 String [] ratingsFile;
-GDropList chooseShape;
 
 void setup(){
   size(800, 600);
@@ -21,9 +20,11 @@ void setup(){
   createGUI();
   noStroke();
   
+  shapeDropList.setItems(new String[] {"Circle", "Heart", "Star", "Square", "Random"}, 0);
+  
   ratingsFile = loadStrings("rating.txt");
   
-  review = "waiting for review...";
+  review = "waiting for review..."; //prevent any errors with the clock
    
   fireworks = new ArrayList();
   particles = new ArrayList();
@@ -45,11 +46,12 @@ void draw(){
     
     if (l.isDead()){
       fireworks.remove(i);
+      
     }
     
   }
   
-  //updateand display the particles
+  //update and display the particles
   for (int i = particles.size()-1; i >= 0; i--){
     Particle p = particles.get(i);
     p.update();
@@ -57,6 +59,7 @@ void draw(){
     
     if (p.isDead()){
       particles.remove(i);
+      
     }
   }
   
@@ -67,6 +70,7 @@ void draw(){
     fill(0, 0, 255);
     textSize(30);
     text(": Hue", 725, 70);
+    
   }
   
   calculateRating();

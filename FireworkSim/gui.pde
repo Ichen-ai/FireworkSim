@@ -44,6 +44,10 @@ public void hueKnobTurn(GKnob source, GEvent event) { //_CODE_:hueKnob:633906:
   hue = hueKnob.getValueI();
 } //_CODE_:hueKnob:633906:
 
+public void shapeDropListClicked(GDropList source, GEvent event) { //_CODE_:shapeDropList:276311:
+
+} //_CODE_:shapeDropList:276311:
+
 
 
 // Create all the GUI controls. 
@@ -107,6 +111,9 @@ public void createGUI(){
   hueKnob.setOpaque(false);
   hueKnob.addEventHandler(this, "hueKnobTurn");
   chooseHuePanel.addControl(hueKnob);
+  shapeDropList = new GDropList(gui, 10, 100, 110, 120, 5, 10);
+  //shapeDropList.setItems(loadStrings("list_276311"), 0);
+  shapeDropList.addEventHandler(this, "shapeDropListClicked");
   gui.loop();
 }
 
@@ -122,3 +129,4 @@ GOption randomHue;
 GOption chooseHue; 
 GPanel chooseHuePanel; 
 GKnob hueKnob; 
+GDropList shapeDropList; 

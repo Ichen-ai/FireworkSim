@@ -6,31 +6,37 @@ class Particle{
   float gravity = 0.1;
   
   //constructor
-  Particle(float x, float y, float h, float s){
+  Particle(float x, float y, float h, float s, PVector v){
     this.pos = new PVector(x, y);
     
-    this.vel = PVector.random2D(); //make a unit vector pointing in a random direction
-    this.vel.mult(random(2, 6));
+    this.vel = v.copy();//creates a copy of of the instructions needed to create a shape
+    this.vel.add(PVector.random2D().mult(0.5));
     
     this.lifespan = 255;
     this.hue = h;
     this.size = s;
+    
   }
   
   //methods
   void update(){
-    this.vel.y += gravity;
+    this.vel.y += gravity; //adding gravity to velocity
     this.pos.add(vel);
+    this.vel.mult(0.96); //air resistance
     
-    lifespan -= 4;
+    lifespan -= 3; //makes fireworks fade away
+    
   }
   
   void display(){
     fill(hue, 255, 255, lifespan);
     ellipse(pos.x, pos.y, size, size);
+    
   }
   
+  //remove if the particle have dissipated
   boolean isDead(){
     return lifespan < 0;
+    
   }
 }
